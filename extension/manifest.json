@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "High Agency",
+  "name": "Unswayed",
   "description": "Hide social metrics to form your own opinions first",
   "version": "2.0",
   "permissions": ["storage"],
