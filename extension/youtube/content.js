@@ -15,7 +15,7 @@ const SHOW_RULES = {
     ytd-video-view-count-renderer,
     #metadata-line > span.inline-metadata-item:first-of-type,
     ytd-grid-video-renderer #metadata-line > span:first-child,
-    yt-lockup-metadata-view-model .yt-content-metadata-view-model__metadata-row:last-child > .yt-content-metadata-view-model__metadata-text:first-child,
+    yt-lockup-metadata-view-model .yt-content-metadata-view-model__metadata-row:not(:first-child) > .yt-content-metadata-view-model__metadata-text:first-child,
     yt-lockup-metadata-view-model .yt-content-metadata-view-model__delimiter,
     .shortsLockupViewModelHostOutsideMetadataSubhead {
       display: revert !important;
