@@ -2,7 +2,7 @@
 
 ## Goal
 
-Extend High Agency X into a multi-site extension ("High Agency") that hides social signals on YouTube, using the same architecture as the existing X support.
+Extend Unswayed into a multi-site extension that hides social signals on YouTube, using the same architecture as the existing X support.
 
 ## Signals to Hide (all on by default)
 
@@ -66,7 +66,7 @@ Namespaced to avoid collisions and maintain backward compatibility:
 
 ## Renaming
 
-- Extension name: "High Agency X" → "High Agency"
+- Extension name: "Unswayed"
 - Subtitle per tab: "Hide metrics on X" / "Hide metrics on YouTube"
 
 ## Implementation Steps
