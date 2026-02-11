@@ -24,7 +24,7 @@ ytd-grid-video-renderer #metadata-line > span:first-child {
 }
 
 /* Sidebar recommended videos (view count + dot delimiter) */
-yt-lockup-metadata-view-model .yt-content-metadata-view-model__metadata-row:last-child > .yt-content-metadata-view-model__metadata-text:first-child,
+yt-lockup-metadata-view-model .yt-content-metadata-view-model__metadata-row:not(:first-child) > .yt-content-metadata-view-model__metadata-text:first-child,
 yt-lockup-metadata-view-model .yt-content-metadata-view-model__delimiter {
   display: none !important;
 }
