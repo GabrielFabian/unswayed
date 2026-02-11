@@ -15,13 +15,17 @@ ytd-video-view-count-renderer {
   display: none !important;
 }
 
-/* Homepage / feed (view count in metadata line) */
-ytd-video-meta-block #metadata-line > span.inline-metadata-item:first-of-type {
+/* Homepage, feed, channel (view count is first span in metadata line) */
+#metadata-line > span.inline-metadata-item:first-of-type {
+  display: none !important;
+}
+ytd-grid-video-renderer #metadata-line > span:first-child {
   display: none !important;
 }
 
-/* Grid video renderer (channel pages) */
-ytd-grid-video-renderer #metadata-line > span:first-child {
+/* Sidebar recommended videos (view count + dot delimiter) */
+yt-lockup-metadata-view-model .yt-content-metadata-view-model__metadata-row:last-child > .yt-content-metadata-view-model__metadata-text:first-child,
+yt-lockup-metadata-view-model .yt-content-metadata-view-model__delimiter {
   display: none !important;
 }
 
