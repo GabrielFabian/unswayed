@@ -23,7 +23,9 @@ const SHOW_RULES = {
   `,
   yt_likes: `
     like-button-view-model .yt-spec-button-shape-next__button-text-content,
-    ytd-comment-engagement-bar #vote-count-middle {
+    ytd-comment-engagement-bar #vote-count-middle,
+    reel-action-bar-view-model like-button-view-model .yt-spec-button-shape-with-label__label,
+    reel-action-bar-view-model > button-view-model:nth-of-type(3) .yt-spec-button-shape-with-label__label {
       display: revert !important;
     }
   `,
@@ -37,7 +39,8 @@ const SHOW_RULES = {
     }
   `,
   yt_commentCount: `
-    ytd-comments-header-renderer #count {
+    ytd-comments-header-renderer #count,
+    reel-action-bar-view-model > button-view-model:nth-of-type(1) .yt-spec-button-shape-with-label__label {
       display: revert !important;
     }
   `,
