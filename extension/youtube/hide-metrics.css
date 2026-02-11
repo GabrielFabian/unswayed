@@ -1,0 +1,97 @@
+/* =============================================================
+   Static defaults — injected at document_start before render.
+   All metrics hidden by default to prevent flicker.
+   The content script will remove rules for metrics the user
+   has opted to show.
+   ============================================================= */
+
+/* ---- View counts ---- */
+
+/* Watch page (info line below description) */
+ytd-watch-info-text yt-formatted-string#info > span:first-child {
+  display: none !important;
+}
+ytd-video-view-count-renderer {
+  display: none !important;
+}
+
+/* Homepage / feed (view count in metadata line) */
+ytd-video-meta-block #metadata-line > span.inline-metadata-item:first-of-type {
+  display: none !important;
+}
+
+/* Grid video renderer (channel pages) */
+ytd-grid-video-renderer #metadata-line > span:first-child {
+  display: none !important;
+}
+
+/* Shorts view counts */
+.shortsLockupViewModelHostOutsideMetadataSubhead {
+  display: none !important;
+}
+
+/* ---- Like counts ---- */
+
+/* Watch page like button text */
+like-button-view-model .yt-spec-button-shape-next__button-text-content {
+  display: none !important;
+}
+
+/* Comment thumbs up counts */
+ytd-comment-engagement-bar #vote-count-middle {
+  display: none !important;
+}
+
+/* ---- Subscriber counts ---- */
+
+/* Watch page (below video in description area) */
+ytd-video-description-infocards-section-renderer #subtitle {
+  display: none !important;
+}
+
+/* Channel page header */
+yt-page-header-view-model .yt-content-metadata-view-model__metadata-text {
+  display: none !important;
+}
+
+/* Watch page owner info */
+#upload-info #owner-sub-count,
+#owner #owner-sub-count,
+yt-formatted-string#owner-sub-count {
+  display: none !important;
+}
+
+/* ---- Comment counts ---- */
+
+/* "X Comments" header */
+ytd-comments-header-renderer #count {
+  display: none !important;
+}
+
+/* ---- Trending / popular badges ---- */
+
+/* Watch page badges */
+ytd-video-primary-info-renderer ytd-badge-supported-renderer {
+  display: none !important;
+}
+
+/* Homepage / feed badges */
+ytd-rich-grid-media ytd-badge-supported-renderer.top-badge {
+  display: none !important;
+}
+
+/* Channel page video badges */
+ytd-grid-video-renderer #video-badges {
+  display: none !important;
+}
+
+/* Shelf featured badges */
+ytd-rich-shelf-renderer #featured-badge,
+ytd-rich-shelf-renderer #paygated-featured-badge {
+  display: none !important;
+}
+
+/* Generic badge shapes with trending content */
+ytd-badge-supported-renderer[system-icons] {
+  display: none !important;
+}
