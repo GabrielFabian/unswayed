@@ -5,7 +5,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      width: 260px;
+      width: 300px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #000;
       color: #e7e9ea;
@@ -53,6 +53,11 @@
     .tab.active[data-tab="youtube"] {
       color: #ff0000;
       border-bottom-color: #ff0000;
+    }
+
+    .tab.active[data-tab="linkedin"] {
+      color: #0a66c2;
+      border-bottom-color: #0a66c2;
     }
 
     .panel {
@@ -127,6 +132,11 @@
       background: #ff0000;
     }
 
+    /* LinkedIn toggles use LinkedIn blue */
+    #panel-linkedin input:checked + .slider {
+      background: #0a66c2;
+    }
+
     input:checked + .slider::before {
       transform: translateX(18px);
     }
@@ -138,6 +148,7 @@
   <div class="tabs">
     <button class="tab active" data-tab="x">X</button>
     <button class="tab" data-tab="youtube">YouTube</button>
+    <button class="tab" data-tab="linkedin">LinkedIn</button>
   </div>
 
   <div id="panel-x" class="panel active">
@@ -231,6 +242,50 @@
       <label for="yt_trending">Trending</label>
       <label class="toggle">
         <input type="checkbox" id="yt_trending">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="panel-linkedin" class="panel">
+    <p class="subtitle">Hide metrics on LinkedIn</p>
+
+    <div class="row">
+      <label for="li_reactions">Reactions</label>
+      <label class="toggle">
+        <input type="checkbox" id="li_reactions">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="li_comments">Comments</label>
+      <label class="toggle">
+        <input type="checkbox" id="li_comments">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="li_reposts">Reposts</label>
+      <label class="toggle">
+        <input type="checkbox" id="li_reposts">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="li_followers">Followers / Connections</label>
+      <label class="toggle">
+        <input type="checkbox" id="li_followers">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="li_searchSocialProof">Search social proof</label>
+      <label class="toggle">
+        <input type="checkbox" id="li_searchSocialProof">
         <span class="slider"></span>
       </label>
     </div>

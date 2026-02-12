@@ -1,6 +1,7 @@
 const X_METRICS = ["replies", "retweets", "likes", "bookmarks", "views", "followers"];
 const YT_METRICS = ["yt_views", "yt_likes", "yt_subscribers", "yt_commentCount", "yt_trending"];
-const ALL_METRICS = [...X_METRICS, ...YT_METRICS];
+const LI_METRICS = ["li_reactions", "li_comments", "li_reposts", "li_followers", "li_searchSocialProof"];
+const ALL_METRICS = [...X_METRICS, ...YT_METRICS, ...LI_METRICS];
 
 const DEFAULTS = {
   replies: true,
@@ -14,6 +15,11 @@ const DEFAULTS = {
   yt_subscribers: true,
   yt_commentCount: true,
   yt_trending: true,
+  li_reactions: true,
+  li_comments: true,
+  li_reposts: true,
+  li_followers: true,
+  li_searchSocialProof: true,
 };
 
 // Tab switching
