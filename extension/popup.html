@@ -55,6 +55,11 @@
       border-bottom-color: #ff0000;
     }
 
+    .tab.active[data-tab="hackernews"] {
+      color: #ff6600;
+      border-bottom-color: #ff6600;
+    }
+
     .panel {
       display: none;
     }
@@ -127,6 +132,11 @@
       background: #ff0000;
     }
 
+    /* Hacker News toggles use HN orange */
+    #panel-hackernews input:checked + .slider {
+      background: #ff6600;
+    }
+
     input:checked + .slider::before {
       transform: translateX(18px);
     }
@@ -138,6 +148,7 @@
   <div class="tabs">
     <button class="tab active" data-tab="x">X</button>
     <button class="tab" data-tab="youtube">YouTube</button>
+    <button class="tab" data-tab="hackernews">HN</button>
   </div>
 
   <div id="panel-x" class="panel active">
@@ -231,6 +242,34 @@
       <label for="yt_trending">Trending</label>
       <label class="toggle">
         <input type="checkbox" id="yt_trending">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="panel-hackernews" class="panel">
+    <p class="subtitle">Hide metrics on Hacker News</p>
+
+    <div class="row">
+      <label for="hn_points">Points</label>
+      <label class="toggle">
+        <input type="checkbox" id="hn_points">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="hn_commentCounts">Comment counts</label>
+      <label class="toggle">
+        <input type="checkbox" id="hn_commentCounts">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="row">
+      <label for="hn_time">Timing</label>
+      <label class="toggle">
+        <input type="checkbox" id="hn_time">
         <span class="slider"></span>
       </label>
     </div>

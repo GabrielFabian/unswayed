@@ -1,6 +1,7 @@
 const X_METRICS = ["replies", "retweets", "likes", "bookmarks", "views", "followers"];
 const YT_METRICS = ["yt_views", "yt_likes", "yt_subscribers", "yt_commentCount", "yt_trending"];
-const ALL_METRICS = [...X_METRICS, ...YT_METRICS];
+const HN_METRICS = ["hn_points", "hn_commentCounts", "hn_time"];
+const ALL_METRICS = [...X_METRICS, ...YT_METRICS, ...HN_METRICS];
 
 const DEFAULTS = {
   replies: true,
@@ -14,6 +15,9 @@ const DEFAULTS = {
   yt_subscribers: true,
   yt_commentCount: true,
   yt_trending: true,
+  hn_points: true,
+  hn_commentCounts: true,
+  hn_time: true,
 };
 
 // Tab switching
