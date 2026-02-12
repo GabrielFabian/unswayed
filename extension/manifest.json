@@ -23,6 +23,12 @@
       "css": ["youtube/hide-metrics.css"],
       "js": ["youtube/content.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://www.linkedin.com/*", "*://linkedin.com/*"],
+      "css": ["linkedin/hide-metrics.css"],
+      "js": ["linkedin/content.js"],
+      "run_at": "document_start"
     }
   ],
   "icons": {

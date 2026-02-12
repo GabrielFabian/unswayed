@@ -1,0 +1,75 @@
+/* =============================================================
+   Static defaults — injected at document_start before render.
+   All metrics hidden by default to prevent flicker.
+   The content script will remove rules for metrics the user
+   has opted to show.
+   ============================================================= */
+
+/* ---- Reactions ---- */
+button[aria-label*=" reaction" i] span:not(:has(svg)),
+button[aria-label*=" reactions" i] span:not(:has(svg)),
+a[aria-label*=" reaction" i] span:not(:has(svg)),
+a[aria-label*=" reactions" i] span:not(:has(svg)),
+button[data-reaction-details],
+li.social-details-social-counts__reactions,
+img.reactions-icon,
+.social-details-social-counts__reactions-count,
+.social-details-social-counts__reactions-count span:not(:has(svg)),
+.social-details-social-counts__social-proof-text,
+.social-details-social-counts__social-proof-text span:not(:has(svg)),
+.social-details-social-counts__social-proof-fallback-number,
+[class*="social-details-social-counts__social-proof"],
+[class*="social-details-social-counts__social-proof"] span:not(:has(svg)),
+[id*="consumption-ring" i],
+svg[id*="consumption-ring" i],
+li:has(> svg[id*="consumption-ring" i]),
+[data-view-name*="likes_count"] {
+  display: none !important;
+}
+
+/* ---- Comments ---- */
+button[aria-label*=" comment" i] span:not(:has(svg)),
+button[aria-label*=" comments" i] span:not(:has(svg)),
+a[aria-label*=" comment" i] span:not(:has(svg)),
+a[aria-label*=" comments" i] span:not(:has(svg)),
+.social-details-social-counts__comments,
+.social-details-social-counts__comments span:not(:has(svg)),
+[data-view-name*="comments_count"] {
+  display: none !important;
+}
+
+/* ---- Reposts ---- */
+button[aria-label*=" repost" i] span:not(:has(svg)),
+button[aria-label*=" reposts" i] span:not(:has(svg)),
+a[aria-label*=" repost" i] span:not(:has(svg)),
+a[aria-label*=" reposts" i] span:not(:has(svg)),
+.social-details-social-counts__social-activity,
+.social-details-social-counts__social-activity span:not(:has(svg)),
+[data-view-name*="reshare_count"] {
+  display: none !important;
+}
+
+/* ---- Followers / connections ---- */
+a[href*="/followers/"] span:not(:has(svg)),
+a[href*="/connections/"] span:not(:has(svg)),
+a[href*="/followers/"] strong,
+a[href*="/connections/"] strong {
+  display: none !important;
+}
+
+/* ---- Search social proof ---- */
+[data-view-name="search-result-social-proof-insight"],
+p:has([data-view-name="search-result-social-proof-insight"]),
+[data-view-name="people-search-result"] div:has(> p > [data-view-name="search-result-social-proof-insight"]) {
+  display: none !important;
+}
+
+/* Keep action buttons/icons visible and clickable */
+.social-actions-button,
+.social-actions-button svg,
+button[aria-label*="like" i],
+button[aria-label*="comment" i],
+button[aria-label*="repost" i],
+button[aria-label*="send" i] {
+  visibility: visible !important;
+}

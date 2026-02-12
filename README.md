@@ -2,7 +2,7 @@
 
 George Mack writes that basing your opinion off the opinion of others is a low-agency trap. We agree.
 
-Unswayed is a Chrome extension that hides social metrics — likes, views, retweets, subscriber counts — across platforms like X and YouTube. The idea is simple: decide for yourself whether something is good, before the crowd tells you what to think.
+Unswayed is a Chrome extension that hides social metrics — likes, views, retweets, subscriber counts — across platforms like X, YouTube, and LinkedIn. The idea is simple: decide for yourself whether something is good, before the crowd tells you what to think.
 
 You can still like, comment, subscribe, and share. You just won't see the numbers.
 
@@ -18,6 +18,11 @@ You can still like, comment, subscribe, and share. You just won't see the number
 - Subscriber counts on channels
 - Trending badges and popularity indicators
 - Remix counts on Shorts
+
+**LinkedIn**
+- Reaction, comment, and repost counts on posts
+- Follower and connection counts on profile/company surfaces
+- Search social proof (mutual connections, "connections work here", similar people/company cues)
 
 Everything is togglable. Open the extension popup, flip the switches for what you want hidden, and it takes effect immediately. Metrics are hidden by default.
 
@@ -53,7 +58,10 @@ extension/
 ├── x/
 │   ├── content.js
 │   └── hide-metrics.css
-└── youtube/
+├── youtube/
+│   ├── content.js
+│   └── hide-metrics.css
+└── linkedin/
     ├── content.js
     └── hide-metrics.css
 ```
