@@ -1,0 +1,19 @@
+/* =============================================================
+   Static defaults — injected at document_start before render.
+   All metrics hidden by default to prevent flicker.
+   The content script will remove rules for metrics the user
+   has opted to show.
+   ============================================================= */
+
+/* ---- Points ---- */
+span.score {
+  display: none !important;
+}
+
+/* ---- Comment counts ---- */
+/* handled by JS text replacement to keep links clickable */
+
+/* ---- User signals ---- */
+span.age {
+  display: none !important;
+}

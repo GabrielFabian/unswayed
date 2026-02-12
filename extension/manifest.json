@@ -23,6 +23,12 @@
       "css": ["youtube/hide-metrics.css"],
       "js": ["youtube/content.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://news.ycombinator.com/*"],
+      "css": ["hackernews/hide-metrics.css"],
+      "js": ["hackernews/content.js"],
+      "run_at": "document_start"
     }
   ],
   "icons": {

@@ -2,7 +2,7 @@
 
 George Mack writes that basing your opinion off the opinion of others is a low-agency trap. We agree.
 
-Unswayed is a Chrome extension that hides social metrics — likes, views, retweets, subscriber counts — across platforms like X and YouTube. The idea is simple: decide for yourself whether something is good, before the crowd tells you what to think.
+Unswayed is a Chrome extension that hides social metrics — likes, views, retweets, subscriber counts — across platforms like X, YouTube, and Hacker News. The idea is simple: decide for yourself whether something is good, before the crowd tells you what to think.
 
 You can still like, comment, subscribe, and share. You just won't see the numbers.
 
@@ -18,6 +18,13 @@ You can still like, comment, subscribe, and share. You just won't see the number
 - Subscriber counts on channels
 - Trending badges and popularity indicators
 - Remix counts on Shorts
+
+**Hacker News**
+- Story points
+- Story comment counts / discuss counts
+- Time/age stamps (separate toggle)
+- Keeps upvote arrows visible and clickable
+- Keeps comment links visible and clickable (only the count text is hidden)
 
 Everything is togglable. Open the extension popup, flip the switches for what you want hidden, and it takes effect immediately. Metrics are hidden by default.
 
@@ -46,11 +53,20 @@ Each supported site has its own folder under `extension/` with two files:
 
 The popup UI (`popup.html` + `popup.js`) has a tab for each platform and writes toggle state to storage. Changes take effect immediately.
 
+### Hacker News behavior notes
+
+- The extension hides social counts but preserves core actions.
+- "Comment counts" changes labels like `123 comments` or `discuss` to `comments`, while keeping the link active.
+- "Timing" only affects age/time stamps.
+
 ```
 extension/
 ├── manifest.json
 ├── popup.html / popup.js
 ├── x/
+│   ├── content.js
+│   └── hide-metrics.css
+├── hackernews/
 │   ├── content.js
 │   └── hide-metrics.css
 └── youtube/
