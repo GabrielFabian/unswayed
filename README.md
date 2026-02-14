@@ -26,7 +26,12 @@ You can still like, comment, subscribe, and share. You just won't see the number
 - Keeps upvote arrows visible and clickable
 - Keeps comment links visible and clickable (only the count text is hidden)
 
-Everything is togglable. Open the extension popup, flip the switches for what you want hidden, and it takes effect immediately. Metrics are hidden by default.
+Everything is togglable. Click the extension icon to open the side panel and use:
+- **Turn Off All Social Signals** (global bulk toggle across all supported sites)
+- **Turn Off All on X / YouTube / HN** (per-site bulk toggles)
+- Individual metric toggles for fine-grained control
+
+Changes take effect immediately. Metrics are hidden by default.
 
 ## Installation
 
@@ -51,7 +56,13 @@ Each supported site has its own folder under `extension/` with two files:
 - **`hide-metrics.css`** — Injected at `document_start`, before the page renders. Hides all metrics with `display: none !important` so you never see numbers flash before disappearing.
 - **`content.js`** — Reads your preferences from `chrome.storage.sync` and injects `display: revert !important` overrides for any metrics you've chosen to show.
 
-The popup UI (`popup.html` + `popup.js`) has a tab for each platform and writes toggle state to storage. Changes take effect immediately.
+The side panel UI (`popup.html` + `popup.js`) has:
+- A global master switch (`Turn Off All Social Signals`)
+- A tab for each platform
+- A per-platform master switch (`Turn Off All on ...`)
+- Per-metric switches for fine-grained overrides
+
+The side panel writes toggle state to storage and content scripts react in real time.
 
 ### Hacker News behavior notes
 
@@ -62,6 +73,7 @@ The popup UI (`popup.html` + `popup.js`) has a tab for each platform and writes 
 ```
 extension/
 ├── manifest.json
+├── background.js
 ├── popup.html / popup.js
 ├── x/
 │   ├── content.js
