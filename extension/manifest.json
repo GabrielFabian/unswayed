@@ -3,13 +3,18 @@
   "name": "Unswayed",
   "description": "Hide social metrics to form your own opinions first",
   "version": "2.0",
-  "permissions": ["storage"],
+  "permissions": ["storage", "sidePanel"],
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "48": "icon48.png",
       "128": "icon128.png"
     }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
   },
   "content_scripts": [
     {
