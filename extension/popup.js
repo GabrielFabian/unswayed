@@ -12,7 +12,35 @@ const SITE_TOGGLE_IDS = {
   youtube: "all_youtube",
   hackernews: "all_hackernews",
 };
+const SITE_STATUS_IDS = {
+  x: "status_all_x",
+  youtube: "status_all_youtube",
+  hackernews: "status_all_hackernews",
+};
 const GLOBAL_TOGGLE_ID = "all_social_signals";
+const GLOBAL_STATUS_ID = "status_all_social_signals";
+const GLOBAL_STATUS_COPY = {
+  hidden: "Hidden across all supported sites.",
+  visible: "Visible across all supported sites.",
+  partial: "Some signals are hidden across sites.",
+};
+const SITE_STATUS_COPY = {
+  x: {
+    hidden: "Hidden on X.",
+    visible: "Visible on X.",
+    partial: "Some signals are hidden on X.",
+  },
+  youtube: {
+    hidden: "Hidden on YouTube.",
+    visible: "Visible on YouTube.",
+    partial: "Some signals are hidden on YouTube.",
+  },
+  hackernews: {
+    hidden: "Hidden on Hacker News.",
+    visible: "Visible on Hacker News.",
+    partial: "Some signals are hidden on Hacker News.",
+  },
+};
 
 const DEFAULTS = {
   replies: true,
@@ -36,29 +64,66 @@ function setBulkToggleState(checkbox, allEnabled, anyEnabled) {
   checkbox.indeterminate = anyEnabled && !allEnabled;
 }
 
+function setAggregateStatusText(statusId, statusCopy, allEnabled, anyEnabled) {
+  const statusElement = document.getElementById(statusId);
+  if (!statusElement) return;
+
+  if (allEnabled) {
+    statusElement.textContent = statusCopy.hidden;
+  } else if (anyEnabled) {
+    statusElement.textContent = statusCopy.partial;
+  } else {
+    statusElement.textContent = statusCopy.visible;
+  }
+}
+
 function syncBulkToggles(settings) {
   const globalToggle = document.getElementById(GLOBAL_TOGGLE_ID);
   const globalAllEnabled = ALL_METRICS.every((metric) => settings[metric]);
   const globalAnyEnabled = ALL_METRICS.some((metric) => settings[metric]);
   setBulkToggleState(globalToggle, globalAllEnabled, globalAnyEnabled);
+  setAggregateStatusText(GLOBAL_STATUS_ID, GLOBAL_STATUS_COPY, globalAllEnabled, globalAnyEnabled);
 
   for (const [site, metrics] of Object.entries(SITE_METRICS)) {
     const toggle = document.getElementById(SITE_TOGGLE_IDS[site]);
     const siteAllEnabled = metrics.every((metric) => settings[metric]);
     const siteAnyEnabled = metrics.some((metric) => settings[metric]);
     setBulkToggleState(toggle, siteAllEnabled, siteAnyEnabled);
+    setAggregateStatusText(SITE_STATUS_IDS[site], SITE_STATUS_COPY[site], siteAllEnabled, siteAnyEnabled);
   }
 }
 
-// Tab switching
-document.querySelectorAll(".tab").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
-    document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
-    tab.classList.add("active");
-    document.getElementById(`panel-${tab.dataset.tab}`).classList.add("active");
+function activateTab(tabKey) {
+  const tab = document.querySelector(`.tab[data-tab="${tabKey}"]`);
+  const panel = document.getElementById(`panel-${tabKey}`);
+  if (!tab || !panel) return;
+
+  document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+  tab.classList.add("active");
+  panel.classList.add("active");
+}
+
+function focusCurrentSiteTab() {
+  if (!chrome.tabs?.query || !chrome.tabs?.sendMessage) return;
+
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+    const activeTab = tabs?.[0];
+    if (!activeTab?.id) return;
+
+    chrome.tabs.sendMessage(activeTab.id, { type: "unswayed:get-site" }, (response) => {
+      if (chrome.runtime.lastError) return;
+      const site = response?.site;
+      if (!SITE_METRICS[site]) return;
+      activateTab(site);
+    });
   });
+}
+
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => activateTab(tab.dataset.tab));
 });
+focusCurrentSiteTab();
 
 // Load saved settings into the toggles
 chrome.storage.sync.get(DEFAULTS, (settings) => {
