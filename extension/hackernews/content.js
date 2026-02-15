@@ -81,3 +81,8 @@ chrome.storage.onChanged.addListener((changes, area) => {
   if (area !== "sync") return;
   chrome.storage.sync.get(DEFAULTS, applyNowAndAfterLoad);
 });
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type !== "unswayed:get-site") return;
+  sendResponse({ site: "hackernews" });
+});

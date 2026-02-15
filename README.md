@@ -27,9 +27,9 @@ You can still like, comment, subscribe, and share. You just won't see the number
 - Keeps comment links visible and clickable (only the count text is hidden)
 
 Everything is togglable. Click the extension icon to open the side panel and use:
-- **Turn Off All Social Signals** (global bulk toggle across all supported sites)
-- **Turn Off All on X / YouTube / HN** (per-site bulk toggles)
-- Individual metric toggles for fine-grained control
+- **Social Signals** (global hide/show across all supported sites)
+- **X / YouTube / HN Signals** (per-site hide/show quick toggles)
+- **Customize signal-by-signal** sections for fine-grained metric control
 
 Changes take effect immediately. Metrics are hidden by default.
 
@@ -57,10 +57,10 @@ Each supported site has its own folder under `extension/` with two files:
 - **`content.js`** — Reads your preferences from `chrome.storage.sync` and injects `display: revert !important` overrides for any metrics you've chosen to show.
 
 The side panel UI (`popup.html` + `popup.js`) has:
-- A global master switch (`Turn Off All Social Signals`)
-- A tab for each platform
-- A per-platform master switch (`Turn Off All on ...`)
-- Per-metric switches for fine-grained overrides
+- A global master switch (`Social Signals`)
+- A tab for each platform (auto-focuses the current site when supported)
+- A per-platform quick master switch (`X / YouTube / HN Signals`)
+- A collapsed `Customize signal-by-signal` section for fine-grained metric controls
 
 The side panel writes toggle state to storage and content scripts react in real time.
 
