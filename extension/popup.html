@@ -341,24 +341,6 @@
       color: #fff;
     }
 
-    input:indeterminate + .slider {
-      background: #b8acba;
-      border-color: #ad9eaf;
-    }
-
-    input:indeterminate + .slider::before {
-      transform: translateX(17px);
-    }
-
-    input:indeterminate + .slider::after {
-      content: "SOME";
-      left: 10px;
-      right: auto;
-      color: #fff;
-      font-size: 10px;
-      letter-spacing: 0.03em;
-    }
-
     #all_social_signals:checked + .slider {
       background: var(--global-on);
     }
@@ -384,7 +366,7 @@
       <p class="section-title">Global</p>
       <div class="row">
         <div class="label-wrap">
-          <label for="all_social_signals">Social Signals</label>
+          <label for="all_social_signals">Hide all social signals</label>
           <p class="hint" id="status_all_social_signals" aria-live="polite">
             Hidden across all supported sites.
           </p>
@@ -407,7 +389,7 @@
 
       <div class="row">
         <div class="label-wrap">
-          <label for="all_x">X Signals</label>
+          <label for="all_x">Hide all X signals</label>
           <p class="hint" id="status_all_x" aria-live="polite">Hidden on X.</p>
         </div>
         <label class="toggle">
@@ -420,7 +402,7 @@
         <summary>Customize signal-by-signal</summary>
         <div class="metrics">
           <div class="row metric">
-            <label for="replies">Replies</label>
+            <label for="replies">Hide Replies</label>
             <label class="toggle">
               <input type="checkbox" id="replies">
               <span class="slider"></span>
@@ -428,7 +410,7 @@
           </div>
 
           <div class="row metric">
-            <label for="retweets">Retweets</label>
+            <label for="retweets">Hide Retweets</label>
             <label class="toggle">
               <input type="checkbox" id="retweets">
               <span class="slider"></span>
@@ -436,7 +418,7 @@
           </div>
 
           <div class="row metric">
-            <label for="likes">Likes</label>
+            <label for="likes">Hide Likes</label>
             <label class="toggle">
               <input type="checkbox" id="likes">
               <span class="slider"></span>
@@ -444,7 +426,7 @@
           </div>
 
           <div class="row metric">
-            <label for="bookmarks">Bookmarks</label>
+            <label for="bookmarks">Hide Bookmarks</label>
             <label class="toggle">
               <input type="checkbox" id="bookmarks">
               <span class="slider"></span>
@@ -452,7 +434,7 @@
           </div>
 
           <div class="row metric">
-            <label for="views">Views</label>
+            <label for="views">Hide Views</label>
             <label class="toggle">
               <input type="checkbox" id="views">
               <span class="slider"></span>
@@ -460,7 +442,7 @@
           </div>
 
           <div class="row metric">
-            <label for="followers">Followers</label>
+            <label for="followers">Hide Followers</label>
             <label class="toggle">
               <input type="checkbox" id="followers">
               <span class="slider"></span>
@@ -475,7 +457,7 @@
 
       <div class="row">
         <div class="label-wrap">
-          <label for="all_youtube">YouTube Signals</label>
+          <label for="all_youtube">Hide all YouTube signals</label>
           <p class="hint" id="status_all_youtube" aria-live="polite">Hidden on YouTube.</p>
         </div>
         <label class="toggle">
@@ -488,7 +470,7 @@
         <summary>Customize signal-by-signal</summary>
         <div class="metrics">
           <div class="row metric">
-            <label for="yt_views">Views</label>
+            <label for="yt_views">Hide Views</label>
             <label class="toggle">
               <input type="checkbox" id="yt_views">
               <span class="slider"></span>
@@ -496,7 +478,7 @@
           </div>
 
           <div class="row metric">
-            <label for="yt_likes">Likes</label>
+            <label for="yt_likes">Hide Likes</label>
             <label class="toggle">
               <input type="checkbox" id="yt_likes">
               <span class="slider"></span>
@@ -504,7 +486,7 @@
           </div>
 
           <div class="row metric">
-            <label for="yt_subscribers">Subscribers</label>
+            <label for="yt_subscribers">Hide Subscribers</label>
             <label class="toggle">
               <input type="checkbox" id="yt_subscribers">
               <span class="slider"></span>
@@ -512,7 +494,7 @@
           </div>
 
           <div class="row metric">
-            <label for="yt_commentCount">Comment count</label>
+            <label for="yt_commentCount">Hide Comment count</label>
             <label class="toggle">
               <input type="checkbox" id="yt_commentCount">
               <span class="slider"></span>
@@ -520,7 +502,7 @@
           </div>
 
           <div class="row metric">
-            <label for="yt_trending">Trending</label>
+            <label for="yt_trending">Hide Trending</label>
             <label class="toggle">
               <input type="checkbox" id="yt_trending">
               <span class="slider"></span>
@@ -535,7 +517,7 @@
 
       <div class="row">
         <div class="label-wrap">
-          <label for="all_hackernews">HN Signals</label>
+          <label for="all_hackernews">Hide all Hacker News signals</label>
           <p class="hint" id="status_all_hackernews" aria-live="polite">Hidden on Hacker News.</p>
         </div>
         <label class="toggle">
@@ -548,7 +530,7 @@
         <summary>Customize signal-by-signal</summary>
         <div class="metrics">
           <div class="row metric">
-            <label for="hn_points">Points</label>
+            <label for="hn_points">Hide Points</label>
             <label class="toggle">
               <input type="checkbox" id="hn_points">
               <span class="slider"></span>
@@ -556,7 +538,7 @@
           </div>
 
           <div class="row metric">
-            <label for="hn_commentCounts">Comment counts</label>
+            <label for="hn_commentCounts">Hide Comment counts</label>
             <label class="toggle">
               <input type="checkbox" id="hn_commentCounts">
               <span class="slider"></span>
@@ -564,7 +546,7 @@
           </div>
 
           <div class="row metric">
-            <label for="hn_time">Timing</label>
+            <label for="hn_time">Hide Timing</label>
             <label class="toggle">
               <input type="checkbox" id="hn_time">
               <span class="slider"></span>

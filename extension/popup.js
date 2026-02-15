@@ -21,24 +21,20 @@ const GLOBAL_TOGGLE_ID = "all_social_signals";
 const GLOBAL_STATUS_ID = "status_all_social_signals";
 const GLOBAL_STATUS_COPY = {
   hidden: "Hidden across all supported sites.",
-  visible: "Visible across all supported sites.",
-  partial: "Some signals are hidden across sites.",
+  visible: "Not all supported signals are hidden.",
 };
 const SITE_STATUS_COPY = {
   x: {
     hidden: "Hidden on X.",
-    visible: "Visible on X.",
-    partial: "Some signals are hidden on X.",
+    visible: "Not all X signals are hidden.",
   },
   youtube: {
     hidden: "Hidden on YouTube.",
-    visible: "Visible on YouTube.",
-    partial: "Some signals are hidden on YouTube.",
+    visible: "Not all YouTube signals are hidden.",
   },
   hackernews: {
     hidden: "Hidden on Hacker News.",
-    visible: "Visible on Hacker News.",
-    partial: "Some signals are hidden on Hacker News.",
+    visible: "Not all Hacker News signals are hidden.",
   },
 };
 
@@ -59,19 +55,17 @@ const DEFAULTS = {
   hn_time: true,
 };
 
-function setBulkToggleState(checkbox, allEnabled, anyEnabled) {
+function setBulkToggleState(checkbox, allEnabled) {
   checkbox.checked = allEnabled;
-  checkbox.indeterminate = anyEnabled && !allEnabled;
+  checkbox.indeterminate = false;
 }
 
-function setAggregateStatusText(statusId, statusCopy, allEnabled, anyEnabled) {
+function setAggregateStatusText(statusId, statusCopy, allEnabled) {
   const statusElement = document.getElementById(statusId);
   if (!statusElement) return;
 
   if (allEnabled) {
     statusElement.textContent = statusCopy.hidden;
-  } else if (anyEnabled) {
-    statusElement.textContent = statusCopy.partial;
   } else {
     statusElement.textContent = statusCopy.visible;
   }
@@ -80,16 +74,14 @@ function setAggregateStatusText(statusId, statusCopy, allEnabled, anyEnabled) {
 function syncBulkToggles(settings) {
   const globalToggle = document.getElementById(GLOBAL_TOGGLE_ID);
   const globalAllEnabled = ALL_METRICS.every((metric) => settings[metric]);
-  const globalAnyEnabled = ALL_METRICS.some((metric) => settings[metric]);
-  setBulkToggleState(globalToggle, globalAllEnabled, globalAnyEnabled);
-  setAggregateStatusText(GLOBAL_STATUS_ID, GLOBAL_STATUS_COPY, globalAllEnabled, globalAnyEnabled);
+  setBulkToggleState(globalToggle, globalAllEnabled);
+  setAggregateStatusText(GLOBAL_STATUS_ID, GLOBAL_STATUS_COPY, globalAllEnabled);
 
   for (const [site, metrics] of Object.entries(SITE_METRICS)) {
     const toggle = document.getElementById(SITE_TOGGLE_IDS[site]);
     const siteAllEnabled = metrics.every((metric) => settings[metric]);
-    const siteAnyEnabled = metrics.some((metric) => settings[metric]);
-    setBulkToggleState(toggle, siteAllEnabled, siteAnyEnabled);
-    setAggregateStatusText(SITE_STATUS_IDS[site], SITE_STATUS_COPY[site], siteAllEnabled, siteAnyEnabled);
+    setBulkToggleState(toggle, siteAllEnabled);
+    setAggregateStatusText(SITE_STATUS_IDS[site], SITE_STATUS_COPY[site], siteAllEnabled);
   }
 }
 
